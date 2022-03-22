@@ -1,0 +1,61 @@
+{% extends "block.html " %}
+{%block content%}
+{% if not current_user.confirm %}
+<h6>Your Account has not been verified <a href={{url_for('users.resend')}}>CLick here to verify your account</a></h6>
+{% endif %}
+<div class="content-section" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <div class="media">
+        <img class="rounded-circle account-img" src={{image}}>
+        <div class = 'media-body'>
+            <br><h5 class="account-heading">{{ current_user.username }}</h5>
+            <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+        </div>
+    <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                <legend class="border-bottom mb-4">Account Information</legend>
+                    {{form.username.label(class="form-control-label")}}
+                    {%if form.username.errors %}
+                        {{form.username(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {%for error in form.username.errors%}
+                                <span>{{ error }}</span>
+                            {%endfor%}
+                        </div>
+                    {%else%}
+                        {{form.username(class="form-control form-control-lg")}}
+                    {%endif%}
+                </div>
+                <div class="form-group">
+                    {{form.email.label(class="form-control-label")}}
+                    {%if form.email.errors %}
+                        {{form.email(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {%for error in form.email.errors%}
+                                <span>{{ error  }}</span>
+                            {%endfor%}
+                        </div>
+                    {%else%}
+                        {{form.email(class="form-control form-control-lg")}}
+                    {%endif%}
+                    </div>
+        </fieldset>
+            <div class="form-group">
+                <br>{{ form.image.label() }}
+                <br>{{ form.image(class='form-control-file') }}
+                {% if form.image.errors %}
+                    {% for errors in form.image.errors %}
+                       <br> <span class="text-danger">{{ errors }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+                    <div class="form-group">
+                    <br>{{form.submit(class="btn btn-outline-info")}}
+                </div>
+</form>
+    </div>
+
+
+{%endblock content%}

@@ -1,0 +1,9 @@
+Dear {{ user.username }},
+Welcome to Blog By Harry!
+
+To confirm your account please click on the following link:
+{{ url_for('users.token_login', token=token, _external=True) }}
+
+Sincerely
+The HarryBlog Team
+Note: replies to this email address are not allowed

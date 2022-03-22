@@ -1,0 +1,41 @@
+{% extends "block.html" %}
+{%block content%}
+<div class="content-section">
+  <form method="POST" action="">
+      {{form.hidden_tag()}}
+    <fieldset class="form-group">
+      <legend class="botter_bottom mb-4">Your View</legend>
+      <div class="form-group">
+        {{form.title.label(class="form-control-label")}}
+        {%if form.title.errors %}
+                        {{form.title(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {%for error in form.email.errors%}
+                                <span>{{ error }}</span>
+                            {%endfor%}
+                        </div>
+                    {%else%}
+                        {{form.title(class="form-control form-control-lg", placeholder="Your Current Strike Experience")}}
+                    {%endif%}
+      </div>
+      <div class="form-group">
+        {{form.content.label(class="form-control-label")}}
+        {%if form.content.errors %}
+                        {{form.content(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                            {%for error in form.content.errors%}
+                                <span>{{ error }}</span>
+                            {%endfor%}
+                        </div>
+                    {%else%}
+                        {{form.content(class="form-control form-control-lg", placeholder="Mind sharing how you plan to make the most use of this period")}}
+
+                    {%endif%}
+        <br><div class="form_group">
+                    {{form.post(class="btn btn-outline-info")}}
+                </div>
+      </div>
+    </fieldset>
+  </form>
+  </div>
+{%endblock content%}

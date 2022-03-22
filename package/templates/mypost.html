@@ -1,0 +1,56 @@
+{% extends "block.html" %}
+{%block content%}
+{% if not post %}
+<h1>You currently have no post!</h1>
+{% else %}
+ <h1>My Posts ({{post.total}})</h1>
+    {% for post in post.items %}
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to delete post? </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action={{url_for('posts.delete_post', post_id = post.id)}} method = 'POST' >
+            <input class="btn btn-danger" type="Submit" value="Delete " >
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<article>
+  <div class="media-body">
+    <div class="article-metadata">
+      <small class="text-muted">{{ post.date_posted.strftime('%y-%m-%d') }}</small>
+    </div>
+    <h2 class="article-title">{{ post.title }}</h2>
+    <p class="article-content">{{ post.content }}</p>
+  </div>
+            <div>
+                  <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('posts.update_post', post_id=post.id)}}">Edit Post</a>
+                  <button type=button class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal" >Delete Post</button>
+            </div>
+            {% endfor %}
+</article>
+{% endif %}
+{% if post.total > 5%}
+{% for page_num in post.iter_pages(left_edge=2, left_current=1, right_edge=1, right_current=2) %}
+    {%if page_num%}
+         {%if post.page == page_num %}
+            <a class="btn btn-info mb-4"   href={{url_for('posts.my_post', page=page_num)}}>{{page_num}}</a>
+         {% else %}
+            <a class="btn btn-outline-info mb-4"   href={{url_for('posts.my_post', page=page_num)}}>{{page_num}}</a>
+         {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+{% endif %}
+{%endblock content%}
+

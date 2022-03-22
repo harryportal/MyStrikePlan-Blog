@@ -1,0 +1,26 @@
+{% extends "block.html" %}
+{%block content%}
+<div class="container">
+    <h2>This blog was created for students across the Federal Universities in Nigeria to share their thoughts on Asuu strike
+    and how they intend to make the best use of this period.</h2>
+
+            {% if not current_user.is_authenticated %}
+            <form action="/register">
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-info">Be a Part</button>
+                </div>
+            </form>
+    {% endif %}
+            <form action="/post/new">
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-info">Share your View</button>
+                </div>
+            </form>
+
+
+
+
+
+</div>
+
+{%endblock content%}

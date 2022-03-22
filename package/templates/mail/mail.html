@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Strike Plans</title>
+</head>
+<body>
+<h4>Hello, {{user.firstname}}</h4>
+<h4>Welcome to My Strike Plans Blog!</h4>
+<h4>Please click on the following link to confirm your account</h4>
+<a href={{url_for('users.token_login', token=token, _external=True)}}><h4>Verify my account</h4></a>
+
+<h5>Note: replies to this mail are not allowed</h5>
+</body>
+</html>
+
+
+
+
+
