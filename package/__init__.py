@@ -1,14 +1,13 @@
 
 
 from flask import Flask
-from flask_whooshee import Whooshee
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from .config import Config
 from .posts.forms import SearchForm
 
 
-whooshee = Whooshee()
+
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.login_view = 'users.login'
@@ -25,7 +24,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
-    whooshee.init_app(app)
+    
 
     from .main.routes import main
     from .users.routes import users
