@@ -8,8 +8,13 @@ def error(e):
     return render_template('404.html')
 
 
+@errors.app_errorhandler(500)
+def error(e):
+    return render_template('500.html')
 
-
+@errors.app_errorhandler(403)
+def error(e):
+    return render_template('500.html')
 
 @errors.app_context_processor
 def shell_context():
