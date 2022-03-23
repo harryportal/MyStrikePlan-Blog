@@ -1,4 +1,4 @@
-{% extends "block.html " %}
+{% extends "block.html" %}
 {%block content%}
 {% if not current_user.confirm %}
 <h6>Your Account has not been verified <a href={{url_for('users.resend')}}>CLick here to verify your account</a></h6>
