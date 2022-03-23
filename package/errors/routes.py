@@ -16,12 +16,6 @@ def error(e):
 def error(e):
     return render_template('500.html')
 
-
-@errors.app_errorhandler(400)
-def error(e):
-    return render_template('500.html')
-
-
 @errors.app_context_processor
 def shell_context():
     return dict(db=db, User=User, Post=Post)

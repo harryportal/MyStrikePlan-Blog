@@ -18,6 +18,7 @@
   </div>
 </article>
     {%endfor%}
+{% if post.total > 5%}
 {% for page_num in post.iter_pages(left_edge=2, left_current=1, right_edge=1, right_current=2) %}
     {%if page_num%}
          {%if post.page == page_num %}
@@ -29,5 +30,6 @@
         ...
     {% endif %}
 {% endfor%}
+{% endif %}
 {%endblock content%}
 
