@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     lastname = db.Column(db.String(20), nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(20), unique=True, nullable=False)
-    image = db.Column(db.String(60), nullable=False, default='default.jpg')
+    image = db.Column(db.String, nullable=False, default='default.jpg')
     password = db.Column(db.String(100), nullable=False)
     confirm = db.Column(db.Boolean, default=False)
     school = db.Column(db.String, nullable=False)
