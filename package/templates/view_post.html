@@ -10,7 +10,7 @@
     </div>
     <h2 class="article-title">{{ post.title }}</h2>
     <p class="article-content">{{ post.content }}</p>
-      {% if current_user.id == post.author.id %}
+      {% if current_user.id == post.author.id or current_user.username == 'Admin'%}
   </div>
             <div>
                   <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('posts.update_post', post_id=post.id)}}">Edit </a>
