@@ -1,2 +1,2 @@
 # MyStrikePlan-Blog
-A basic blog build with Bootstrap v4 and Flask
+A basic blog built with `Bootstrap` and `Flask`
