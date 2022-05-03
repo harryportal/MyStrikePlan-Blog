@@ -13,6 +13,8 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
     id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String, unique=True, nullable=False)
+    lastname = db.Column(db.String, unique=True, nullable=False)
     username = db.Column(db.String, unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     image = db.Column(db.String, nullable=False, default='default.jpg')

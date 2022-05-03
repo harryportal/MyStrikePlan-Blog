@@ -7,6 +7,7 @@ from .edit_username import edit_google_username
 from package import db
 from flask_login import login_user
 from flask import redirect
+from random import randrange
 
 
 gauth = Blueprint('gauth', __name__)
@@ -48,7 +49,8 @@ def google_authorize():
         return redirect(url_for('main.home'))
     else:
         new_name = edit_google_username(user['given_name'])
-        new_user = User(username=new_name, email=user['email'])
+        new_user = User(username=new_name, email=user['email'], lastname=user['given_name'],
+                        firstname=user, password=randrange(10000,20000))
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user)

@@ -49,7 +49,8 @@ def register():
         return redirect(url_for('main.home'))
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password,
+                    lastname=form.lastname.data, firstname=form.firstname.data)
         db.session.add(user)
         db.session.commit()
         email_token(user)

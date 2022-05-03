@@ -8,6 +8,8 @@ from flask_login import current_user
 
 
 class RegistrationForm(FlaskForm):
+    firstname = StringField('Firstname', validators=[DataRequired(), Length(min=2, max=20)])
+    lastname = StringField('Lastname', validators=[DataRequired(), Length(min=2, max=20)])
     username = StringField('Username',validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
