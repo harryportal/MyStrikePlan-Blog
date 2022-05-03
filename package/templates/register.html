@@ -6,34 +6,6 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                    {{form.firstname.label(class="form-control-label")}}
-                    {%if form.firstname.errors %}
-                        {{form.firstname(class="form-control form-control-lg is-invalid")}}
-                        <div class="invalid-feedback">
-                            {%for error in form.firstname.errors%}
-                                <span>{{ error }}</span>
-                            {%endfor%}
-                        </div>
-                    {%else%}
-                        {{form.firstname(class="form-control form-control-lg", placeholder="First name")}}
-                    {%endif%}
-                </div>
-                <div class="form-group col-md-6">
-                    {{form.lastname.label(class="form-control-label")}}
-                    {%if form.lastname.errors %}
-                        {{form.lastname(class="form-control form-control-lg is-invalid")}}
-                        <div class="invalid-feedback">
-                            {%for error in form.lastname.errors%}
-                                <span>{{ error }}</span>
-                            {%endfor%}
-                        </div>
-                    {%else%}
-                        {{form.lastname(class="form-control form-control-lg", placeholder="Last name")}}
-                    {%endif%}
-                </div>
-                 </div>
-                <div class="form-row">
                 <div class="form-group col-md-6">
                     {{form.username.label(class="form-control-label")}}
                     {%if form.username.errors %}
@@ -95,22 +67,6 @@
                     {%endif%}
                 </div>
                  </div>
-
-                <div class="form-group">
-                    {{form.school.label(class="my-1 mr-2",for="inlineFormCustomSelectPref")}}
-                    {%if form.school.errors %}
-                        {{form.school(class="form-control form-control-lg is-invalid")}}
-                        <div class="invalid-feedback">
-                            {%for error in form.school.errors%}
-                                <span>{{ error }}</span>
-                            {%endfor%}
-                        </div>
-                    {%else%}
-                        {{form.school(class="custom-select my-1 mr-sm-2", id="inlineFormCustomSelectPref", placeholder="Confirm Password")}}
-                    {%endif%}
-                </div>
-
-
             </fieldset>
              <div class="form-group" >
                     {{form.submit(class="btn btn-outline-info")}}

@@ -39,6 +39,12 @@
             </fieldset>
              <div class="form_group">
                     {{form.submit(class="btn btn-outline-info")}}
+                </div><br>
+            <div class="google-btn">
+                <div class="google-icon-wrapper">
+                    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </div>
+                <p class="btn-text"><a href="login/google" style="text-decoration:None; color:inherit"><b>Sign in with google</b></a></p>
                 </div>
             <small class="text-muted" ml-2>
                 <a href={{url_for('users.reset_pass')}}>Forgot Password?</a>

@@ -4,17 +4,14 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField,Select
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from package.database import User
 from flask_login import current_user
-from .utils import  school_list
+
 
 
 class RegistrationForm(FlaskForm):
-    firstname = StringField('First Name', validators=[DataRequired(), Length(min=2, max=20)])
-    lastname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=20)])
     username = StringField('Username',validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirmpassword = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    school = SelectField('School', choices=school_list)
     submit = SubmitField('Sign Up')
 
 
