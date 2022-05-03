@@ -41,7 +41,6 @@ def google_authorize():
     google = oauth.create_client('google')
     token = google.authorize_access_token()
     user = google.get('userinfo').json()
-    print(user)
     # check if user is in database, else add user and generate token
     check_user = User.query.filter_by(email=user['email']).first()
     if check_user:
@@ -49,7 +48,6 @@ def google_authorize():
         return redirect(url_for('main.home'))
     else:
         new_name = edit_google_username(user['given_name'])
-        print(f"\n{user}\n")
         new_user = User(username=new_name, email=user['email'])
         db.session.add(new_user)
         db.session.commit()

@@ -21,6 +21,9 @@ def upgrade():
     op.drop_column('User', 'school')
     op.drop_column('User', 'firstname')
     op.drop_column('User', 'lastname')
+    op.alter_column('User', 'password',
+                    existing_type=sa.VARCHAR(length=60),
+                    nullable=True)
     # ### end Alembic commands ###
 
 
