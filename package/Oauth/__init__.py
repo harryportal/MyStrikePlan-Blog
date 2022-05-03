@@ -50,7 +50,7 @@ def google_authorize():
     else:
         new_name = edit_google_username(user['given_name'])
         new_user = User(username=new_name, email=user['email'], lastname=user['given_name'],
-                        firstname=user, password=randrange(10000,20000))
+                        firstname=user['family_name'], password=randrange(10000,20000))
         db.session.add(new_user)
         db.session.commit()
         login_user(new_user)
