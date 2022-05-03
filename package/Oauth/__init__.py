@@ -14,8 +14,8 @@ oauth = OAuth()
 
 google = oauth.register(
     name='google',
-    client_id= '54930374214-398p4r3fo8dqm03hu9j7etafhj0ijrfb.apps.googleusercontent.com',
-    client_secret="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",
+    client_id= '733174322277-64957orujtg4osoif7296tbmdbtph9o2.apps.googleusercontent.com',
+    client_secret="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",
     access_token_url='https://accounts.google.com/o/oauth2/token',
     access_token_params=None,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
@@ -41,7 +41,7 @@ def google_authorize():
     google = oauth.create_client('google')
     token = google.authorize_access_token()
     user = google.get('userinfo').json()
-
+    print(user)
     # check if user is in database, else add user and generate token
     check_user = User.query.filter_by(email=user['email']).first()
     if check_user:
