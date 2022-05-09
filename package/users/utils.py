@@ -3,9 +3,30 @@ import secrets
 from package import mail, create_app
 from PIL import Image
 from flask_mail import Message
-from flask import url_for, render_template
+from flask import render_template
+import boto3
+
 
 app = create_app()
+
+
+def save_image_s3(image):
+    session = boto3.Session(
+        aws_access_key_id=app.config['AWS_ACCESS_KEY'],
+        aws_secret_access_key=app.config['AWS_SECRET_KEY']
+    )
+    s3 = session.resource('s3')
+    bucket = s3.Bucket(app.config['AWS_BUCKET'])
+
+    # create a new filename to avoid duplication
+    random_hex = secrets.token_hex(8)
+    _, file_ext = os.path.splitext(image.filename)
+    image_file = random_hex + file_ext
+    #upload image to s3 bucket
+    bucket.upload_fileobj(image, image_file, ExtraArgs={'ACL':'public-Read'})
+    return image_file
+
+
 
 
 def save_picture(image):
