@@ -6,8 +6,12 @@
  <h2>Search results for {{searched}}.....</h2>
 {% for post in post%}
         <article class="media content-section">
+            {% if post.author.image == 'default.jpg' %}
             <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'pictures/' + post.author.image)}}">
-  <div class="media-body">
+            {% else %}
+            <img class="rounded-circle article-img" src="{{ post.author.image }}">
+            {% endif %}
+             <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2" href={{url_for('posts.user_post', user=post.author.username)}}>{{ post.author.username }}</a>
       <small class="text-muted">{{ post.date_posted.strftime('%y-%m-%d') }}</small>
