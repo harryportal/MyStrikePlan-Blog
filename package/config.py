@@ -13,6 +13,9 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
         SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
-    AWS_ACCESS_KEY = 'AKIA3RE5THN33TJ4ONNI'
-    AWS_SECRET_KEY = 'OpaN1qTNV/fPdOgAyBlyCpiqGD1IrTb7XrZ9mgio'
+
+
+
+
+
 

@@ -78,3 +78,4 @@ Whoosh==2.7.4
 WTForms==3.0.1
 
 boto3~=1.22.9
+cloudinary~=1.29.0

@@ -5,7 +5,7 @@ from package.database import User
 from package import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
-from .utils import save_picture, reset_token, email_token
+from .utils import cloudinary_file_upload, reset_token, email_token
 
 
 @users.route('/login', methods=['GET', 'POST'])
@@ -79,7 +79,8 @@ def account():
     form = Updateform()
     if form.validate_on_submit():  # update the account
         if form.image.data:  # add a picture
-            picture = save_picture(form.image.data)
+            print(form.image.data)
+            picture = cloudinary_file_upload(form.image.data)
             current_user.image = picture
         current_user.username = form.username.data
         current_user.email = form.email.data
@@ -89,7 +90,7 @@ def account():
     elif request.method == 'GET':  # fill the form with the current username and email
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image = url_for('static', filename=f'pictures/{current_user.image}')
+    image = current_user.image
     return render_template('account.html', title='Account', image=image, form=form)
 
 
