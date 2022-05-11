@@ -5,10 +5,10 @@
 {% endif %}
 <div class="content-section" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <div class="media">
-        {% if current_user.image == 'default.jpg' %}
-            <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'pictures/' + current_user.image)}}">
+         {% if current_user.image == 'default.jpg' %}
+            <img class="rounded-circle account-img" src="{{ url_for('static', filename = 'pictures/' + current_user.image)}}">
             {% else %}
-            <img class="rounded-circle article-img" src="{{ current_user.image }}">
+            <img class="rounded-circle account-img" src="{{ current_user.image }}">
             {% endif %}
         <div class = 'media-body'>
             <br><h6 class="account-heading">{{ current_user.username }}</h6>
