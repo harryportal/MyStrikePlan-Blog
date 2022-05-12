@@ -84,7 +84,7 @@ def search():
     if form.validate_on_submit():
         searched_post = form.searched.data
         post_query = (Post.query.filter(or_(Post.content.like('%' + searched_post + '%'),
-                                            Post.title.like('%' + searched_post + '%'))))
+                               Post.title.like('%' + searched_post + '%'))))
         post = post_query.all()
         page = request.args.get('page', 1, type=int)
         posts_perpage = post_query.paginate(page, per_page=10)
