@@ -1,12 +1,13 @@
 {% extends "block.html" %}
 {%block content%}
-
-        <article class="media content-section">
+<article>
+        <div class="media content-section">
             {% if post.author.image == 'default.jpg' %}
             <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'pictures/' + post.author.image)}}">
             {% else %}
             <img class="rounded-circle article-img" src="{{ post.author.image }}">
             {% endif %}
+
             <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2" href="#">{{ post.author.username }}</a>
@@ -16,6 +17,7 @@
     <p class="article-content">{{ post.content }}</p>
       {% if current_user.id == post.author.id or current_user.username == 'Admin'%}
   </div>
+            </div>
             <div style="display:flex; align-items:center">
                   <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('posts.update_post', post_id=post.id)}}">Edit Post</a>
                   <button type=button class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal" >Delete Post</button>
@@ -23,7 +25,8 @@
                      data-text="View my thought on Asuu Strike and how I&#39;m making the best of this period" data-show-count="false">Tweet</a>
             </div>
             {% endif %}
-</article>
+
+    </article>
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

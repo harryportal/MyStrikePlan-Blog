@@ -17,9 +17,6 @@
                         </div>
                     {%else%}
                     <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
-                        </div>
                         {{form.firstname(class="form-control form-control-lg", placeholder="firstname")}}
                     </div>
 
@@ -35,7 +32,7 @@
                             {%endfor%}
                         </div>
                     {%else%}
-                        {{form.lastname(class="form-control form-control-lg", placeholder="Email")}}
+                        {{form.lastname(class="form-control form-control-lg", placeholder="Lastname")}}
                     {%endif%}
                 </div>
                 </div>
@@ -104,6 +101,12 @@
             </fieldset>
              <div class="form-group" >
                     {{form.submit(class="btn btn-outline-info")}}
+                </div>
+            <div class="google-btn">
+                <div class="google-icon-wrapper">
+                    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </div>
+                <p class="btn-text"><a href="login/google" style="text-decoration:None; color:inherit"><b>Signup with Google</b></a></p>
                 </div>
         </form>
     </div>

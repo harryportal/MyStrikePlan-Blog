@@ -1,6 +1,6 @@
 {% extends "block.html" %}
 {%block content%}
-{%if current_user.username == user.username%}
+{%if current_user.id == user.id%}
     <h1 class="mb-3">My Posts({{post.total}})</h1>
 {% else %}
     <h1 class="mb-3">Posts by {{user.username}} ({{post.total}})</h1>

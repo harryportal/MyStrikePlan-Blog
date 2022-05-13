@@ -29,8 +29,8 @@
     <div class="article-metadata">
       <small class="text-muted">{{ post.date_posted.strftime('%y-%m-%d') }}</small>
     </div>
-    <h2 class="article-title">{{ post.title }}</h2>
-    <p class="article-content">{{ post.content }}</p>
+    <h2><a class="article-title" href={{url_for('posts.view_post', post_id=post.id)}}>{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
   </div>
             <div style="display:flex; align-items:center">
                   <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('posts.update_post', post_id=post.id)}}">Edit Post</a>

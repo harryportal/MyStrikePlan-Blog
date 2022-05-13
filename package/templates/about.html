@@ -1,8 +1,8 @@
 {% extends "block.html" %}
 {%block content%}
 <div class="container">
-    <h2>This blog was created for students across the Federal Universities in Nigeria to share their thoughts on Asuu strike
-    and how they intend to make the best use of this period.</h2>
+    <h6 class="display-4">This is an open space for students and everyone affected by the current strike
+        to share their experience so far and suggest a way forward.</h6>
 
             {% if not current_user.is_authenticated %}
             <form action="/login">
